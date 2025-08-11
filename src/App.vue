@@ -16,7 +16,7 @@
                       <div class="relative w-10 h-10">
                         <img src="@/assets/Vion.png" alt="">
                       </div>
-                      <span class="text-3xl font-bold text-black"
+                      <span class="text-3xl font-bold " style="color: oklch(0.7 0.2 240);"
                         >VION</span
                       >
                     </div>  
@@ -1712,28 +1712,16 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue';
+import { ref } from 'vue';
 import Tsparticle from './components/Tsparticle.vue';
 
 const isMenuOpen = ref(false)
 const isLight = ref(false);
 
-onMounted(() => {
-  const savedTheme = localStorage.getItem("theme");
-
-  if (savedTheme) {
-    isLight.value = !window.matchMedia("(prefers-color-scheme: dark)").matches;
-  } else {
-    isLight.value = savedTheme === "light";
-  }
-
-  document.documentElement.classList.toggle("light", isLight.value);
-});
 
 function toggleTheme() {
   isLight.value = !isLight.value;
   document.documentElement.classList.toggle("light", isLight.value);
-  localStorage.setItem("theme", isLight.value ? "light" : "dark");
 }
 </script>
 
