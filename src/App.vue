@@ -1722,9 +1722,9 @@ onMounted(() => {
   const savedTheme = localStorage.getItem("theme");
 
   if (savedTheme) {
-    isLight.value = savedTheme === "light";
-  } else {
     isLight.value = !window.matchMedia("(prefers-color-scheme: dark)").matches;
+  } else {
+    isLight.value = savedTheme === "light";
   }
 
   document.documentElement.classList.toggle("light", isLight.value);
