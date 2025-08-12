@@ -14,7 +14,7 @@
                   <div class="relative">
                     <div class="flex items-center space-x-3">
                       <div class="relative w-10 h-10">
-                        <img src="@/assets/Vion.png" alt="">
+                        <img src="@/assets/Vion.png" alt="logo">
                       </div>
                       <span class="text-3xl font-bold " style="color: oklch(0.7 0.2 240);"
                         >VION</span
@@ -314,7 +314,7 @@
                 >
                   <div class="group">
                     <div
-                      class="bg-card border border-border rounded-lg p-8 h-full hover:border-[#0057FF]/30 transition-all duration-300" data-aos="zoom-out-down" data-aos-anchor-placement="bottom-bottom"
+                      class="bg-card border border-border rounded-lg p-8 h-full hover:border-[#0057FF]/30 transition-all duration-300"  data-aos="zoom-in-up"
                     >
                       <div
                         class="w-16 h-16 bg-red-500/10 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
@@ -352,7 +352,7 @@
                   </div>
                   <div class="group">
                     <div
-                      class="bg-card border border-border rounded-lg p-8 h-full hover:border-[#0057FF]/30 transition-all duration-300" data-aos="zoom-out-down" data-aos-anchor-placement="bottom-bottom"
+                      class="bg-card border border-border rounded-lg p-8 h-full hover:border-[#0057FF]/30 transition-all duration-300" data-aos="zoom-in-up"
                     >
                       <div
                         class="w-16 h-16 bg-orange-500/10 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
@@ -390,7 +390,7 @@
                   </div>
                   <div class="group">
                     <div
-                      class="bg-card border border-border rounded-lg p-8 h-full hover:border-[#0057FF]/30 transition-all duration-300" data-aos="zoom-out-down" data-aos-anchor-placement="bottom-bottom"
+                      class="bg-card border border-border rounded-lg p-8 h-full hover:border-[#0057FF]/30 transition-all duration-300" data-aos="zoom-in-up"
                     >
                       <div
                         class="w-16 h-16 bg-purple-500/10 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
@@ -431,7 +431,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="text-center" data-aos="zoom-in" data-aos-anchor-placement="top-bottom">
+                <div class="text-center" data-aos="zoom-in-up">
                   <div
                     class="bg-gradient-to-r from-red-900/20 to-orange-900/20 border border-red-500/20 rounded-xl p-8 max-w-4xl mx-auto"
                   >
@@ -508,7 +508,7 @@
                   <div class="relative order-2 lg:order-1">
                     <div
                       class="bg-gradient-to-br from-muted to-background rounded-2xl p-8 shadow-2xl border border-border"
-                      data-aos="fade-up" data-aos-anchor-placement="bottom-bottom"
+                      data-aos="zoom-in-up"
                     >
                       <div
                         class="bg-card rounded-xl border border-border shadow-lg overflow-hidden"
@@ -652,7 +652,7 @@
                       </p>
                     </div>
                   </div>
-                  <div class="space-y-10 order-1 lg:order-2" data-aos="zoom-in-left">
+                  <div class="space-y-10 order-1 lg:order-2" data-aos="zoom-in-up">
                     <div class="flex items-start space-x-6 group">
                       <div
                         class="w-16 h-16 rounded-xl bg-gradient-to-r from-[#0057FF] to-[#0057FF]/80 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300"
@@ -853,8 +853,7 @@
                 <div class="max-w-5xl mx-auto">
                   <div
                     class="bg-card border border-border rounded-2xl overflow-hidden shadow-2xl" 
-                    data-aos="flip-up"
-                    data-duration="3000"
+                   data-aos="zoom-in-up"
                   >
                     <div
                       class="bg-gradient-to-r from-[#0057FF]/5 to-[#FF6B00]/5 border-b border-border p-8"
@@ -1142,8 +1141,7 @@
                       центра за 4 недели
                     </p>
                     <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                      <div class="text-center group relative" data-aos="fade-up"
-                      data-aos-anchor-placement="bottom-bottom">
+                      <div class="text-center group relative" data-aos="zoom-in-up">
                         <div
                           class="w-16 h-16 bg-white/20 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-white/30 transition-colors backdrop-blur-sm"
                         >
@@ -1177,8 +1175,7 @@
                           class="hidden md:block absolute top-8 left-full w-8 h-px bg-white/30 transform translate-x-4"
                         ></div>
                       </div>
-                      <div class="text-center group relative" data-aos="fade-up"
-                      data-aos-anchor-placement="bottom-bottom">
+                      <div class="text-center group relative" data-aos="zoom-in-up">
                         <div
                           class="w-16 h-16 bg-white/20 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-white/30 transition-colors backdrop-blur-sm"
                         >
@@ -1213,8 +1210,7 @@
                           class="hidden md:block absolute top-8 left-full w-8 h-px bg-white/30 transform translate-x-4"
                         ></div>
                       </div>
-                      <div class="text-center group relative" data-aos="fade-up"
-                      data-aos-anchor-placement="bottom-bottom">
+                      <div class="text-center group relative" data-aos="zoom-in-up">
                         <div
                           class="w-16 h-16 bg-white/20 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-white/30 transition-colors backdrop-blur-sm"
                         >
@@ -1247,8 +1243,7 @@
                           class="hidden md:block absolute top-8 left-full w-8 h-px bg-white/30 transform translate-x-4"
                         ></div>
                       </div>
-                      <div class="text-center group" data-aos="fade-up"
-                      data-aos-anchor-placement="bottom-bottom">
+                      <div class="text-center group" data-aos="zoom-in-up">
                         <div
                           class="w-16 h-16 bg-white/20 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-white/30 transition-colors backdrop-blur-sm"
                         >
@@ -1314,7 +1309,7 @@
               ></div>
             </section>
             <section class="section-spacing  relative overflow-hidden"><!-- bg-card -->
-              <div class="container-corporate" data-aos="zoom-in-down">
+              <div class="container-corporate" data-aos="zoom-in-up">
                 <div class="max-w-4xl mx-auto text-center relative z-10">
                   <div class="flex items-center justify-center mb-8">
                     <div
@@ -1435,33 +1430,12 @@
             id="contact"
             class="bg-background border-t border-border pt-20 pb-8"
           >
-            <div class="container-corporate" data-aos="fade-down"
-              data-aos-easing="linear" data-aos-duration="1500">
+            <div class="container-corporate" data-aos="zoom-in-up">
               <div class="grid grid-cols-1 md:grid-cols-3 gap-16 mb-16">
                 <div>
                   <div class="flex items-center space-x-3 mb-8">
                     <div class="relative w-12 h-12">
-                      <div
-                        class="absolute inset-0 bg-gradient-to-r from-[#0057FF] to-[#FF6B00] rounded-xl"
-                      ></div>
-                      <div
-                        class="absolute inset-0 flex items-center justify-center"
-                      >
-                        <div class="w-6 h-6 relative">
-                          <div
-                            class="absolute w-full h-0.5 bg-white top-2"
-                          ></div>
-                          <div
-                            class="absolute w-full h-0.5 bg-white bottom-2"
-                          ></div>
-                          <div
-                            class="absolute w-0.5 h-full bg-white left-2"
-                          ></div>
-                          <div
-                            class="absolute w-0.5 h-full bg-white right-2"
-                          ></div>
-                        </div>
-                      </div>
+                      <img src="@/assets/Vion.png" alt="logo">
                     </div>
                     <span class="text-2xl font-bold text-foreground">VION</span>
                   </div>

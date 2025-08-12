@@ -1966,7 +1966,7 @@
   }
 
   .bg-background\/95 {
-    background-color: color-mix(in oklab, oklch(1 0 0) 95%, transparent);
+    background-color: color-mix(in oklab, oklch(1 0 0) 100%, transparent);
   }
 
   .bg-black\/50 {
