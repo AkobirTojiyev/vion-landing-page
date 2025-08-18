@@ -1,0 +1,129 @@
+{
+  "header": {
+    "home": "Bosh sahifa",
+    "solutions": "Yechimlar",
+    "cases": "Muvaffaqiyat hikoyalari",
+    "contacts": "Kontaktlar",
+    "tryFree": "Bepul sinab ko'rish",
+    "headline": "O'quv markazini avtomatlashtirish: ta'lim va to'lovlarni boshqarish uchun CRM + LMS",
+    "subheadline": "VION uchun shaxsiy demo oling va boshqaruvdagi tartibsizlikdan qanday qutulish, xarajatlarni kamaytirish va birinchi oy ichida ko'proq talabalarni jalb qilish mumkinligini bilib oling.",
+    "requestDemo": "Demo so'rash",
+    "watchVideo": "Videoni ko'rish",
+    "oneMonth": "1 oy",
+    "implementationTime": "Platformani joriy etish muddati",
+    "timeSaving": "Ish vaqtini tejash 24/7",
+    "support": "Texnik yordam"
+  },
+  "main": {
+    "title": "Avtomatlashtirishsiz o'quv markazlari nima yo'qotadi",
+    "subtitle": "Qo'lda bajariladigan jarayonlar vaqt, pul va markaz obro'sining tizimli yo'qotilishiga olib keladi",
+    "hours": "Oyiga 40+ soat",
+    "hoursDesc": "biznesni rivojlantirish o'rniga Excel va qo'lda hisobotlarga sarflanadi",
+    "studentLoss": "Talabalarning 25% gacha",
+    "studentLossDesc": "aloqa zaifligi va tizimliligining yo'qligi tufayli ketadi",
+    "teachersIssue": "68% o'qituvchilar",
+    "teachersIssueDesc": "jadvaldagi tartibsizlik va ma'muriy yuklamalardan shikoyat qilmoqda",
+    "criticalResult": "KRITIK NATIJA",
+    "criticalDesc": "Daromadning 30–40% gacha kamayishi va nazoratsiz jarayonlar sababli doimiy stress"
+  },
+  "howItHelps": {
+    "title": "VION markazlarga qanday yordam beradi",
+    "items": {
+      "automation": "O'quv markazining barcha jarayonlarini yagona tizimda kompleks avtomatlashtirish",
+      "interface": "Administratorlar va o'qituvchilar uchun intuitiv interfeys",
+      "groups": "Guruhlar va ro'yxatdan o'tishni boshqarish",
+      "groupsDesc": "Guruhlar yaratish, talabalarni yozish, jadvalni bir nechta bosqichda boshqarish",
+      "forum": "Ichki forum",
+      "forumDesc": "O'qituvchilar, talabalar va ota-onalar bilan bitta joyda muloqot",
+      "reports": "Avtomatik hisobotlar va tahlil",
+      "reportsDesc": "Moliyaviy va o'quv hisobotlari avtomatik ravishda yaratiladi, Excel talab etilmaydi",
+      "resultTitle": "NATİJA",
+      "resultDesc": "Jarayonlarni optimallashtirish va talabalar xizmatini yaxshilash orqali daromad 40% ga oshadi"
+    }
+  },
+  "case": {
+    "title": "URANUS holati — birinchi joriy etilgan markaz",
+    "subtitle": "VION platformasi bilan 3 oy ichida avtomatlashtirishning haqiqiy natijalari",
+    "center": "URANUS o'quv markazi",
+    "description": "IT kurslari va professional tayyorlash • Toshkent shahri",
+    "growth": {
+      "label": "talabalar soni oshishi",
+      "period": "3 oy ichida",
+      "fromTo": "50 dan 68 ta o'quvchigacha"
+    },
+    "timeSaving": {
+      "label": "Oyiga vaqt tejash",
+      "desc": "hisobotlarni avtomatlashtirish"
+    },
+    "revenue": {
+      "label": "Daromad o'sishi",
+      "desc": "jarayonlarni optimallashtirish"
+    },
+    "quote": "VION markazimiz ishini tamoman o'zgartirdi. Avval oyiga 40+ soat hisobot tayyorlash va jadvalni boshqarish uchun ketardi. Endi hammasi avtomatlashtirilgan — biz ta'lim sifati ustida diqqatni jamladik. 3 oy ichida talabalar soni 35% ga oshdi, ma'muriy yuk esa deyarli yo'qoldi.",
+    "author": "Alisher Karimov",
+    "position": "URANUS o'quv markazi direktori",
+    "implementation": "VION joriy etilishi",
+    "date": "2024 yil sentyabr • 3 oy ishlash"
+  },
+  "process": {
+    "title": "VION joriy etish jarayoni",
+    "subtitle": "O'quv markazingizni 4 hafta ichida avtomatlashtirishning sodda va shaffof jarayoni",
+    "steps": {
+      "stage": "Bosqich",
+      "analysis": {
+        "title": "Tahlil va sozlash",
+        "desc": "Markazning xususiyatlarini o'rganish, kurslar va guruhlar tuzilmasini sozlash"
+      },
+      "integration": {
+        "title": "Ma'lumotlarni integratsiyalash",
+        "desc": "Talabalar, jadval, hisobotlar va avtomatlashtirishni ko'chirish"
+      },
+      "training": {
+        "title": "Jamoani o'qitish",
+        "desc": "Xodimlarni platformada ishlashga o'rgatish, jarayonlarni sinovdan o'tkazish"
+      },
+      "launch": {
+        "title": "Ishga tushurish va qo'llab-quvvatlash",
+        "desc": "To'liq VIONga o'tish, texnik yordam va optimallashtirish"
+      }
+    }
+  },
+  "trial": {
+    "headline": "Bir oy ichida markazni samarali avtomatlashtirishni xohlaysizmi?",
+    "subheadline": "VION uchun shaxsiy demo oling va birinchi oylar ichida daromadingizni 40% ga oshirish yo'llarini bilib oling",
+    "startTrial": "Bepul trialni boshlash",
+    "trialPeriod": "14 kunlik bepul sinov muddati",
+    "support": "To'liq texnik yordam",
+    "migrationHelp": "Ma'lumotlarni migratsiya qilishda yordam",
+    "labels": {
+      "days": "kun",
+      "fullImplementation": "to'liq joriy etish",
+      "supportShort": "texnik yordam",
+      "uptime": "xizmatning uzluksiz ishlashi"
+    }
+  },
+  "contacts": {
+    "title": "Aloqa",
+    "calls": "Qo'ng'iroqlar",
+    "responseTime": "2 soat ichida javob",
+    "address": "Toshkent sh., Kibray ko'chasi, 55-uy",
+    "country": "O'zbekiston",
+    "navigation": {
+      "navig": "Navigatsiya",
+      "home": "Bosh sahifa",
+      "solutions": "Yechimlar",
+      "cases": "Muvaffaqiyat hikoyalari",
+      "support": "Texnik yordam",
+      "knowledgeBase": "Bilim bazasi",
+      "apiDocs": "API hujjatlari"
+    },
+    "newsletterTitle": "Yangiliklardan xabardor bo'ling",
+    "newsletterDesc": "VION funksiyalari, muvaffaqiyatli joriy etish holatlari va o'quv markazlarini avtomatlashtirishning eng yaxshi amaliyotlari haqida yangiliklarni oling",
+    "emailPlaceholder": "Emailingizni kiriting",
+    "consent": "Obuna bo'lish bilan siz shaxsiy ma'lumotlarni qayta ishlashga rozilik bildirasiz. Istalgan vaqtda obunani bekor qilishingiz mumkin.",
+    "rights": "Barcha huquqlar himoyalangan",
+    "privacy": "Maxfiylik siyosati",
+    "terms": "Foydalanish shartlari",
+    "offer": "Ommaviy taklif"
+  }
+}

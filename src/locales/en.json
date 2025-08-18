@@ -1,0 +1,129 @@
+{
+  "header": {
+    "home": "Home",
+    "solutions": "Solutions",
+    "cases": "Case Studies",
+    "contacts": "Contacts",
+    "tryFree": "Try for free",
+    "headline": "Automation for training centers: CRM + LMS to manage learning and payments",
+    "subheadline": "Get a personalized VION demo and learn how to eliminate management chaos, cut costs and attract more students — already in the first month.",
+    "requestDemo": "Request demo",
+    "watchVideo": "Watch video",
+    "oneMonth": "1 month",
+    "implementationTime": "Platform implementation time",
+    "timeSaving": "Work time savings 24/7",
+    "support": "Technical support"
+  },
+  "main": {
+    "title": "What training centers lose without automation",
+    "subtitle": "Manual processes lead to systemic losses of time, money and the center's reputation",
+    "hours": "40+ hours/month",
+    "hoursDesc": "spent on Excel and manual reports instead of growing the business",
+    "studentLoss": "Up to 25% of students",
+    "studentLossDesc": "leave due to weak communication and lack of systems",
+    "teachersIssue": "68% of teachers",
+    "teachersIssueDesc": "complain about schedule chaos and administrative overload",
+    "criticalResult": "CRITICAL RESULT",
+    "criticalDesc": "A 30–40% drop in profit and constant stress from managing uncontrolled processes"
+  },
+  "howItHelps": {
+    "title": "How VION helps centers",
+    "items": {
+      "automation": "Comprehensive automation of all training center processes in a single system",
+      "interface": "Intuitive interface for administrators and teachers",
+      "groups": "Group and registration management",
+      "groupsDesc": "Create groups, enroll students, manage schedules in a few clicks",
+      "forum": "Internal forum",
+      "forumDesc": "Communicate with teachers, students and parents in one place",
+      "reports": "Automatic reports and analytics",
+      "reportsDesc": "Financial and learning reports are generated automatically — no Excel required",
+      "resultTitle": "RESULT",
+      "resultDesc": "Increase profit by 40% through process optimization and improved student service quality"
+    }
+  },
+  "case": {
+    "title": "URANUS case — first implemented center",
+    "subtitle": "Real automation results after 3 months of working with the VION platform",
+    "center": "URANUS training center",
+    "description": "IT courses and professional training • Tashkent",
+    "growth": {
+      "label": "student growth",
+      "period": "students in 3 months",
+      "fromTo": "from 50 to 68 students"
+    },
+    "timeSaving": {
+      "label": "time saved/month",
+      "desc": "automation of reports"
+    },
+    "revenue": {
+      "label": "revenue growth",
+      "desc": "process optimization"
+    },
+    "quote": "VION radically changed how our center works. Previously, 40+ hours per month were spent preparing reports and managing schedules. Now everything is automated — we focus on the quality of education. In 3 months, the number of students increased by 35%, and the administrative burden almost disappeared.",
+    "author": "Alisher Karimov",
+    "position": "Director of URANUS training center",
+    "implementation": "VION implementation",
+    "date": "September 2024 • 3 months of operation"
+  },
+  "process": {
+    "title": "VION implementation process",
+    "subtitle": "A simple and transparent process to automate your training center in 4 weeks",
+    "steps": {
+      "stage": "Stage",
+      "analysis": {
+        "title": "Analysis and setup",
+        "desc": "Study the specifics of the center, configure course and group structure"
+      },
+      "integration": {
+        "title": "Data integration",
+        "desc": "Migrate students, schedules, configure reporting and automation"
+      },
+      "training": {
+        "title": "Team training",
+        "desc": "Train staff to work with the platform, test processes"
+      },
+      "launch": {
+        "title": "Launch and support",
+        "desc": "Full migration to VION, technical support and optimization"
+      }
+    }
+  },
+  "trial": {
+    "headline": "Do you want effective automation of the center in one month?",
+    "subheadline": "Get a personalized VION demo and learn how to increase your training center's profit by 40% in the first months of operation",
+    "startTrial": "Start free trial",
+    "trialPeriod": "14-day free trial",
+    "support": "Full technical support",
+    "migrationHelp": "Help with data migration",
+    "labels": {
+      "days": "days",
+      "fullImplementation": "full implementation",
+      "supportShort": "support",
+      "uptime": "service uptime"
+    }
+  },
+  "contacts": {
+    "title": "Contacts",
+    "calls": "Calls",
+    "responseTime": "Response within 2 hours",
+    "address": "Tashkent, Kibray St., 55",
+    "country": "Uzbekistan",
+    "navigation": {
+      "navig": "Navigation",
+      "home": "Home",
+      "solutions": "Solutions",
+      "cases": "Case Studies",
+      "support": "Technical support",
+      "knowledgeBase": "Knowledge base",
+      "apiDocs": "API documentation"
+    },
+    "newsletterTitle": "Stay informed",
+    "newsletterDesc": "Receive news about VION features, successful implementation case studies and best practices for automating training centers",
+    "emailPlaceholder": "Enter your email",
+    "consent": "By subscribing you agree to the processing of personal data. You can unsubscribe at any time.",
+    "rights": "All rights reserved",
+    "privacy": "Privacy policy",
+    "terms": "Terms of use",
+    "offer": "Public offer"
+  }
+}

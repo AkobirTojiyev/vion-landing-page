@@ -18,12 +18,12 @@ const props = defineProps({
 
 const particleOptions = computed(() => ({
   background: {
-    color: { value: 'transparent' } // ❗ Fonni transparent qilamiz
+    color: { value: 'transparent' } 
   },
   fpsLimit: 100,
   interactivity: {
     events: {
-      onClick: { enable: true, mode: 'push' },
+      onClick: { enable: false},
       onHover: { enable: true, mode: 'repulse' },
     },
     modes: {
@@ -49,11 +49,12 @@ const particleOptions = computed(() => ({
       straight: false
     },
     number: {
-      density: { enable: true, area: 800 },
-      value: 150
+      value: 150,
+      limit: 180,
+      density: { enable: true, area: 800 }
     },
     opacity: { value: 0.7 },
-    shape: { type: 'circle' },
+    shape: { type: 'star' },
     size: { value: { min: 1, max: 3 } }
   },
   detectRetina: true

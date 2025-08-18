@@ -6,6 +6,7 @@ import 'aos/dist/aos.css';
 import Particles from '@tsparticles/vue3';
 import { loadSlim } from '@tsparticles/slim';
 AOS.init({ duration: 1000, once: false });
+import i18n from './i18n.js'
 
 import App from './App.vue'
 
@@ -17,5 +18,6 @@ myApp.use(Particles, {
     await loadSlim(engine);
   },
 });
+myApp.use(i18n)
 
 myApp.mount('#app')

@@ -26,19 +26,19 @@
                   <a
                     href="#home"
                     class="text-foreground/70 hover:text-[#0057FF] font-medium transition-colors duration-200"
-                    >Главная</a
+                    >{{ t('header.home') }}</a
                   ><a
                     href="#solutions"
                     class="text-foreground/70 hover:text-[#0057FF] font-medium transition-colors duration-200"
-                    >Решения</a
+                    >{{ t('header.solutions') }}</a
                   ><a
                     href="#cases"
                     class="text-foreground/70 hover:text-[#0057FF] font-medium transition-colors duration-200"
-                    >Кейсы</a
+                    >{{ t('header.cases') }}</a
                   ><a
                     href="#contact"
                     class="text-foreground/70 hover:text-[#0057FF] font-medium transition-colors duration-200"
-                    >Контакты</a
+                    >{{ t('header.contacts') }}</a
                   >
                 </nav>
                 <div class="hidden lg:flex items-center space-x-4">
@@ -68,16 +68,65 @@
 
                     <svg v-else xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun w-5 h-5" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
                   </button>
+
+
+                  <!-- LANGUAGE DROPDOWN (here) -->
+                  <div class="relative" ref="root" >
+                    <button
+                      @click="toggleDropdown"
+                      :aria-expanded="open.toString()"
+                      aria-haspopup="true"
+                      class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium disabled:pointer-events-none disabled:opacity-50 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] h-9 py-2 px-3 bg-transparent hover:bg-accent transition-colors duration-150 text-foreground/70"
+                    >
+                      <!-- Active language indicator: emoji + code -->
+                      <span class="flex items-center gap-2">
+                        <span class="text-lg leading-none" aria-hidden="true">
+                          {{ langEmoji[current] }}
+                        </span>
+                        <span class="uppercase font-medium">{{ current }}</span>
+                      </span>
+
+                      <!-- chevron -->
+                      <svg class="w-4 h-4 ml-1 text-foreground/60" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </button>
+
+                    <!-- Dropdown menu -->
+                    <transition name="fade" enter-active-class="transition ease-out duration-150" leave-active-class="transition ease-in duration-100">
+                      <ul
+                        v-if="open"
+                        class="absolute -right-6 mt-2 w-40 dark:bg-slate-800 border bg-sky-600/65 border-gray-200 dark:border-slate-700 rounded-md shadow-lg z-50 py-1"
+                        role="menu"
+                        aria-label="Language options"
+                      >
+                        <li v-for="(label, code) in langs" :key="code">
+                          <button
+                            @click="selectLocale(code)"
+                            class="w-full flex items-center gap-3 px-3 py-2 text-sm hover:bg-violet-300 dark:hover:bg-slate-700 transition-colors"
+                            role="menuitem"
+                          >
+                            <span class="text-lg">{{ langEmoji[code] }}</span>
+                            <div class="flex-1 text-left">
+                              <div class="font-medium text-foreground ">{{ label }}</div>
+                              <div class="text-xs text-foreground/50 mt-0.5 ">{{ langDescription[code] }}</div>
+                            </div>
+
+                            <!-- Active check -->
+                            <svg v-if="current === code" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-[#0057FF]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                              <path d="M20 6L9 17l-5-5"></path>
+                            </svg>
+                          </button>
+                        </li>
+                      </ul>
+                    </transition>
+                  </div>
+
                   <button
-                    data-slot="button"
-                    class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive border bg-background dark:bg-input/30 dark:border-input dark:hover:bg-input/50 h-9 px-4 py-2 has-[>svg]:px-3 text-foreground border-border hover:bg-muted hover:text-[#0057FF] hover:border-[#0057FF]"
-                  >
-                    Вход</button
-                  ><button
                     data-slot="button"
                     class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive h-9 py-2 has-[>svg]:px-3 bg-[#0057FF] hover:bg-[#FF6B00] text-white px-6 transition-all duration-300"
                   >
-                    Попробовать бесплатно
+                    {{ t('header.tryFree') }}
                   </button>
                 </div>
                 <div class="lg:hidden flex items-center space-x-2">
@@ -132,7 +181,7 @@
                 </div>
               </div>
               <transition name="fade">
-                <div v-if="isMenuOpen" class="lg:hidden border-t border-border bg-background"><nav class="py-6 space-y-1"><a href="#home" class="block px-4 py-3 text-foreground hover:text-[#0057FF] hover:bg-muted rounded-lg transition-colors">Главная</a><a href="#solutions" class="block px-4 py-3 text-foreground hover:text-[#0057FF] hover:bg-muted rounded-lg transition-colors">Решения</a><a href="#cases" class="block px-4 py-3 text-foreground hover:text-[#0057FF] hover:bg-muted rounded-lg transition-colors">Кейсы</a><a href="#contact" class="block px-4 py-3 text-foreground hover:text-[#0057FF] hover:bg-muted rounded-lg transition-colors">Контакты</a><div class="px-4 pt-6 space-y-3"><button data-slot="button" class="inline-flex items-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive border bg-background hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 h-9 px-4 py-2 has-[&gt;svg]:px-3 w-full justify-center text-foreground border-border hover:bg-muted">Вход</button><button data-slot="button" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive h-9 px-4 py-2 has-[&gt;svg]:px-3 w-full bg-[#0057FF] hover:bg-[#FF6B00] text-white transition-all duration-300">Попробовать бесплатно</button></div></nav></div>
+                <div v-if="isMenuOpen" class="lg:hidden border-t border-border bg-background"><nav class="py-6 space-y-1"><a href="#home" class="block px-4 py-3 text-foreground hover:text-[#0057FF] hover:bg-muted rounded-lg transition-colors">{{ t('header.home') }}</a><a href="#solutions" class="block px-4 py-3 text-foreground hover:text-[#0057FF] hover:bg-muted rounded-lg transition-colors">{{ t('header.solutions') }}</a><a href="#cases" class="block px-4 py-3 text-foreground hover:text-[#0057FF] hover:bg-muted rounded-lg transition-colors">{{ t('header.cases') }}</a><a href="#contact" class="block px-4 py-3 text-foreground hover:text-[#0057FF] hover:bg-muted rounded-lg transition-colors">{{ t('header.contacts') }}</a><div class="px-4 pt-6 space-y-3"><button data-slot="button" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive h-9 px-4 py-2 has-[&gt;svg]:px-3 w-full bg-[#0057FF] hover:bg-[#FF6B00] text-white transition-all duration-300">{{ t('header.tryFree') }}</button></div></nav></div>
               </transition>
             </div>
           </header>
@@ -159,7 +208,7 @@
                 <div class="max-w-4xl mx-auto text-center">
                   <div class="mb-8 js:mt-[8rem]">
                     <h1 class="text-foreground mb-6">
-                      Автоматизация учебного центра под ключ
+                      {{ t('header.headline') }}
                     </h1>
                     <div
                       class="w-24 h-1 bg-gradient-to-r from-[#0057FF] to-[#FF6B00] mx-auto"
@@ -169,9 +218,7 @@
                     <p
                       class="text-muted-foreground max-w-3xl mx-auto text-xl leading-relaxed"
                     >
-                      Единая CRM-платформа с управлением оплатами, учениками,
-                      преподавателями и отчётностью. Внедрение за 1 месяц,
-                      результат с первого дня.
+                    {{ t('header.subheadline') }}
                     </p>
                   </div>
                   <div
@@ -181,7 +228,7 @@
                       data-slot="button"
                       class="inline-flex items-center justify-center gap-2 whitespace-nowrap disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive h-10 rounded-md has-[>svg]:px-4 bg-[#FF6B00] hover:bg-[#FF6B00]/90 text-white px-8 py-4 text-lg font-medium group transition-all duration-300"
                     >
-                      Запросить демо<svg
+                    {{ t('header.requestDemo') }}<svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="24"
                         height="24"
@@ -217,7 +264,7 @@
                         <path
                           d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"
                         ></path></svg
-                      >Смотреть видео
+                      >{{ t('header.watchVideo') }}
                     </button>
                   </div>
                   <div
@@ -227,10 +274,10 @@
                       <div
                         class="text-3xl font-bold text-[#0057FF] mb-2 group-hover:text-[#FF6B00] transition-colors duration-300"
                       >
-                        15+
+                        {{ t('header.oneMonth') }}
                       </div>
                       <div class="text-muted-foreground font-medium">
-                        Внедрённых центров
+                        {{ t('header.implementationTime') }}
                       </div>
                       <div
                         class="w-12 h-px bg-border mx-auto mt-3 group-hover:bg-[#0057FF] transition-colors duration-300"
@@ -243,7 +290,7 @@
                         80%
                       </div>
                       <div class="text-muted-foreground font-medium">
-                        Экономия рабочего времени
+                        {{ t('header.timeSaving') }}
                       </div>
                       <div
                         class="w-12 h-px bg-border mx-auto mt-3 group-hover:bg-[#0057FF] transition-colors duration-300"
@@ -256,7 +303,7 @@
                         24/7
                       </div>
                       <div class="text-muted-foreground font-medium">
-                        Техническая поддержка
+                        {{ t('header.support') }}
                       </div>
                       <div
                         class="w-12 h-px bg-border mx-auto mt-3 group-hover:bg-[#0057FF] transition-colors duration-300"
@@ -302,11 +349,10 @@
                     ></div>
                   </div>
                   <h2 class="text-foreground mb-6">
-                    Что теряют учебные центры без автоматизации
+                    {{ t('main.title') }}
                   </h2>
                   <p class="text-muted-foreground max-w-2xl mx-auto text-xl">
-                    Ручные процессы приводят к системным потерям времени, денег
-                    и репутации центра
+                    {{ t('main.subtitle') }}
                   </p>
                 </div>
                 <div
@@ -339,11 +385,10 @@
                       <h4
                         class="text-card-foreground mb-4 lgg:text-3xl group-hover:text-[#0057FF] transition-colors duration-300"
                       >
-                        40+ часов/месяц
+                      {{ t('main.hours') }}
                       </h4>
                       <p class="text-muted-foreground leading-relaxed">
-                        тратится на Excel и ручные отчёты вместо развития
-                        бизнеса
+                        {{ t('main.hoursDesc') }}
                       </p>
                       <div
                         class="w-0 h-px bg-gradient-to-r from-[#0057FF] to-[#FF6B00] mt-6 group-hover:w-full transition-all duration-500"
@@ -377,11 +422,10 @@
                       <h4
                         class="text-card-foreground mb-4 lgg:text-3xl group-hover:text-[#0057FF] transition-colors duration-300"
                       >
-                        До 25% студентов
+                      {{ t('main.studentLoss') }}
                       </h4>
                       <p class="text-muted-foreground leading-relaxed">
-                        уходят из-за слабой коммуникации и отсутствия
-                        системности
+                        {{ t('main.studentLossDesc') }}
                       </p>
                       <div
                         class="w-0 h-px bg-gradient-to-r from-[#0057FF] to-[#FF6B00] mt-6 group-hover:w-full transition-all duration-500"
@@ -419,11 +463,10 @@
                       <h4
                         class="text-card-foreground lgg:text-3xl mb-4 group-hover:text-[#0057FF] transition-colors duration-300"
                       >
-                        68% преподавателей
+                      {{ t('main.teachersIssue') }}
                       </h4>
                       <p class="text-muted-foreground leading-relaxed">
-                        жалуются на хаос в расписании и административные
-                        перегрузки
+                        {{ t('main.teachersIssueDesc') }}
                       </p>
                       <div
                         class="w-0 h-px bg-gradient-to-r from-[#0057FF] to-[#FF6B00] mt-6 group-hover:w-full transition-all duration-500"
@@ -441,7 +484,7 @@
                         class="w-12 h-px bg-gradient-to-r from-red-400 to-orange-400 mx-3"
                       ></div>
                       <span class="text-red-400 font-semibold"
-                        >КРИТИЧЕСКИЙ РЕЗУЛЬТАТ</span
+                        >{{ t('main.criticalResult') }}</span
                       >
                       <div
                         class="w-12 h-px bg-gradient-to-l from-red-400 to-orange-400 mx-3"
@@ -449,10 +492,7 @@
                       <div class="w-2 h-2 bg-orange-400 rounded-full"></div>
                     </div>
                     <p class="text-foreground text-xl font-medium">
-                      Снижение прибыли на
-                      <span class="text-red-400 font-bold">30-40%</span> и
-                      постоянный стресс от управления неконтролируемыми
-                      процессами
+                      {{ t('main.criticalDesc') }}
                     </p>
                   </div>
                 </div>
@@ -495,11 +535,10 @@
                     ></div>
                   </div>
                   <h2 class="text-card-foreground mb-6">
-                    Как VION помогает центрам
+                    {{ t('howItHelps.title') }}
                   </h2>
                   <p class="text-muted-foreground max-w-2xl mx-auto text-xl">
-                    Комплексная автоматизация всех процессов учебного центра в
-                    единой системе
+                    {{ t('howItHelps.items.automation') }}
                   </p>
                 </div>
                 <div
@@ -647,8 +686,7 @@
                         </div>
                       </div>
                       <p class="text-center mt-6 text-muted-foreground">
-                        Интуитивный интерфейс для администраторов и
-                        преподавателей
+                        {{ t('howItHelps.items.interface') }}
                       </p>
                     </div>
                   </div>
@@ -679,11 +717,10 @@
                         <h3
                           class="text-card-foreground mb-3 group-hover:text-[#0057FF] transition-colors duration-300"
                         >
-                          Управление группами и регистрациями
+                        {{ t('howItHelps.items.groups') }}
                         </h3>
                         <p class="text-muted-foreground leading-relaxed">
-                          Создание групп, запись студентов, управление
-                          расписанием в несколько кликов
+                          {{ t('howItHelps.items.groupsDesc') }}
                         </p>
                         <div
                           class="w-0 h-px bg-gradient-to-r from-[#0057FF] to-[#FF6B00] mt-4 group-hover:w-full transition-all duration-500"
@@ -716,11 +753,10 @@
                         <h3
                           class="text-card-foreground mb-3 group-hover:text-[#0057FF] transition-colors duration-300"
                         >
-                          Внутренний мессенджер
+                        {{ t('howItHelps.items.forum') }}
                         </h3>
                         <p class="text-muted-foreground leading-relaxed">
-                          Коммуникация с преподавателями, студентами и
-                          родителями в одном месте
+                          {{ t('howItHelps.items.forumDesc') }}
                         </p>
                         <div
                           class="w-0 h-px bg-gradient-to-r from-[#0057FF] to-[#FF6B00] mt-4 group-hover:w-full transition-all duration-500"
@@ -754,11 +790,10 @@
                         <h3
                           class="text-card-foreground mb-3 group-hover:text-[#0057FF] transition-colors duration-300"
                         >
-                          Автоматические отчёты и аналитика
+                        {{ t('howItHelps.items.reports') }}
                         </h3>
                         <p class="text-muted-foreground leading-relaxed">
-                          Финансовые и учебные отчёты генерируются
-                          автоматически, никакого Excel
+                          {{ t('howItHelps.items.reportsDesc') }}
                         </p>
                         <div
                           class="w-0 h-px bg-gradient-to-r from-[#0057FF] to-[#FF6B00] mt-4 group-hover:w-full transition-all duration-500"
@@ -785,14 +820,11 @@
                           <path d="M21.801 10A10 10 0 1 1 17 3.335"></path>
                           <path d="m9 11 3 3L22 4"></path></svg
                         ><span class="font-semibold text-[#0057FF]"
-                          >РЕЗУЛЬТАТ</span
+                          >{{ t('howItHelps.items.resultTitle') }}</span
                         >
                       </div>
                       <p class="text-card-foreground font-medium">
-                        Увеличение прибыли на
-                        <span class="text-[#FF6B00] font-bold">40%</span> за
-                        счёт оптимизации процессов и повышения качества
-                        обслуживания студентов
+                        {{ t('howItHelps.items.resultDesc') }}
                       </p>
                     </div>
                   </div>
@@ -843,11 +875,10 @@
                     ></div>
                   </div>
                   <h2 class="text-foreground mb-6">
-                    Кейс URANUS — первый внедрённый центр
+                    {{ t('case.title') }}
                   </h2>
                   <p class="text-muted-foreground max-w-2xl mx-auto text-xl">
-                    Реальные результаты автоматизации за 3 месяца работы с
-                    платформой VION
+                    {{ t('case.subtitle') }}
                   </p>
                 </div>
                 <div class="max-w-5xl mx-auto">
@@ -871,7 +902,7 @@
                             <h3
                               class="text-2xl font-bold text-card-foreground mb-2"
                             >
-                              Учебный центр URANUS
+                            {{ t('case.center') }}
                             </h3>
                             <div class="flex items-center space-x-1 mb-2">
                               <svg
@@ -957,8 +988,7 @@
                               </svg>
                             </div>
                             <p class="text-muted-foreground">
-                              IT-курсы и профессиональная подготовка • г.
-                              Ташкент
+                              {{ t('case.description') }}
                             </p>
                           </div>
                         </div>
@@ -987,7 +1017,7 @@
                             +35%
                           </div>
                           <div class="text-muted-foreground font-medium">
-                            прирост студентов
+                            {{ t('case.growth.label') }}
                           </div>
                         </div>
                       </div>
@@ -1022,10 +1052,10 @@
                           +35%
                         </div>
                         <div class="text-muted-foreground font-medium">
-                          студентов за 3 месяца
+                          {{ t('case.growth.period') }}
                         </div>
                         <div class="text-sm text-muted-foreground mt-1">
-                          с 50 до 68 учащихся
+                          {{ t('case.growth.fromTo') }}
                         </div>
                       </div>
                       <div class="text-center group">
@@ -1053,10 +1083,10 @@
                           50ч
                         </div>
                         <div class="text-muted-foreground font-medium">
-                          экономия времени/месяц
+                          {{ t('case.timeSaving.label') }}
                         </div>
                         <div class="text-sm text-muted-foreground mt-1">
-                          автоматизация отчётов
+                          {{ t('case.timeSaving.desc') }}
                         </div>
                       </div>
                       <div class="text-center group">
@@ -1086,10 +1116,10 @@
                           +40%
                         </div>
                         <div class="text-muted-foreground font-medium">
-                          рост доходов
+                          {{ t('case.revenue.label') }}
                         </div>
                         <div class="text-sm text-muted-foreground mt-1">
-                          оптимизация процессов
+                          {{ t('case.desc.label') }}
                         </div>
                       </div>
                     </div>
@@ -1097,30 +1127,25 @@
                       <blockquote
                         class="text-card-foreground text-lg leading-relaxed mb-6 border-l-4 border-[#0057FF] pl-6 italic"
                       >
-                        "VION кардинально изменил работу нашего центра. Раньше
-                        40+ часов в месяц уходило на составление отчётов и
-                        управление расписанием. Теперь всё автоматизировано — мы
-                        сосредоточились на качестве обучения. За 3 месяца
-                        количество студентов выросло на 35%, а административная
-                        нагрузка практически исчезла."
+                      {{ t('case.quote') }}
                       </blockquote>
                       <div
                         class="flex flex-col lg:flex-row items-start lg:items-center justify-between"
                       >
                         <div>
                           <div class="font-semibold text-card-foreground">
-                            Алишер Каримов
+                            {{ t('case.author') }}
                           </div>
                           <div class="text-muted-foreground">
-                            Директор учебного центра URANUS
+                            {{ t('case.position') }}
                           </div>
                         </div>
                         <div class="text-right mt-4 lg:mt-0">
                           <div class="text-sm text-muted-foreground">
-                            Внедрение VION
+                            {{ t('case.implementation') }}
                           </div>
                           <div class="text-sm text-[#0057FF] font-medium">
-                            Сентябрь 2024 • 3 месяца работы
+                            {{ t('case.date') }}
                           </div>
                         </div>
                       </div>
@@ -1132,13 +1157,12 @@
                 >
                   <div class="relative z-10">
                     <h3 class="text-2xl font-bold mb-2 text-center">
-                      Процесс внедрения VION
+                      {{ t('process.title') }}
                     </h3>
                     <p
                       class="text-white/90 text-center mb-12 max-w-3xl mx-auto"
                     >
-                      Простой и прозрачный процесс автоматизации вашего учебного
-                      центра за 4 недели
+                    {{ t('process.subtitle') }}
                     </p>
                     <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                       <div class="text-center group relative" data-aos="zoom-in-up">
@@ -1163,13 +1187,12 @@
                             <circle cx="12" cy="12" r="2"></circle>
                           </svg>
                         </div>
-                        <div class="text-xl font-bold mb-2">Неделя 1</div>
+                        <div class="text-xl font-bold mb-2">{{ t('process.steps.stage') }} 1</div>
                         <div class="text-white/90 font-medium mb-2">
-                          Анализ и настройка
+                          {{ t('process.steps.analysis.title') }}
                         </div>
                         <div class="text-sm text-white/80">
-                          Изучение специфики центра, настройка структуры курсов
-                          и групп
+                          {{ t('process.steps.analysis.desc') }}
                         </div>
                         <div
                           class="hidden md:block absolute top-8 left-full w-8 h-px bg-white/30 transform translate-x-4"
@@ -1198,13 +1221,12 @@
                             <circle cx="12" cy="12" r="3"></circle>
                           </svg>
                         </div>
-                        <div class="text-xl font-bold mb-2">Неделя 2</div>
+                        <div class="text-xl font-bold mb-2">{{ t('process.steps.stage') }} 2</div>
                         <div class="text-white/90 font-medium mb-2">
-                          Интеграция данных
+                          {{ t('process.steps.integration.title') }}
                         </div>
                         <div class="text-sm text-white/80">
-                          Перенос студентов, расписания, настройка отчётности и
-                          автоматизации
+                          {{ t('process.steps.integration.desc') }}
                         </div>
                         <div
                           class="hidden md:block absolute top-8 left-full w-8 h-px bg-white/30 transform translate-x-4"
@@ -1231,13 +1253,12 @@
                             <path d="m9 11 3 3L22 4"></path>
                           </svg>
                         </div>
-                        <div class="text-xl font-bold mb-2">Неделя 3</div>
+                        <div class="text-xl font-bold mb-2">{{ t('process.steps.stage') }} 3</div>
                         <div class="text-white/90 font-medium mb-2">
-                          Обучение команды
+                          {{ t('process.steps.training.title') }}
                         </div>
                         <div class="text-sm text-white/80">
-                          Обучение сотрудников работе с платформой, тестирование
-                          процессов
+                          {{ t('process.steps.training.desc') }}
                         </div>
                         <div
                           class="hidden md:block absolute top-8 left-full w-8 h-px bg-white/30 transform translate-x-4"
@@ -1274,13 +1295,12 @@
                             ></path>
                           </svg>
                         </div>
-                        <div class="text-xl font-bold mb-2">Неделя 4</div>
+                        <div class="text-xl font-bold mb-2">{{ t('process.steps.stage') }} 4</div>
                         <div class="text-white/90 font-medium mb-2">
-                          Запуск и поддержка
+                          {{ t('process.steps.launch.title') }}
                         </div>
                         <div class="text-sm text-white/80">
-                          Полный переход на VION, техническая поддержка и
-                          оптимизация
+                          {{ t('process.steps.launch.desc') }}
                         </div>
                       </div>
                     </div>
@@ -1342,14 +1362,12 @@
                     </div>
                   </div>
                   <h2 class="text-card-foreground mb-6">
-                    Хотите эффективную автоматизацию центра за один месяц?
+                    {{ t('trial.headline') }}
                   </h2>
                   <p
                     class="text-muted-foreground text-xl mb-12 max-w-3xl mx-auto leading-relaxed"
                   >
-                    Получите персональную демонстрацию VION и узнайте, как
-                    увеличить прибыль вашего учебного центра на 40% уже в первые
-                    месяцы работы
+                  {{ t('trial.subheadline') }}
                   </p>
                   <div
                     class="flex flex-col sm:flex-row gap-6 justify-center items-center"
@@ -1358,7 +1376,7 @@
                       data-slot="button"
                       class="inline-flex items-center justify-center gap-2 whitespace-nowrap disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive h-10 rounded-md has-[>svg]:px-4 bg-[#0057FF] hover:bg-[#FF6B00] text-white px-10 py-6 text-xl font-semibold group transition-all duration-300 shadow-lg hover:shadow-xl"
                     >
-                      Запустить бесплатный trial<svg
+                    {{ t('trial.startTrial') }}<svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="24"
                         height="24"
@@ -1377,13 +1395,13 @@
                     </button>
                     <div class="text-center sm:text-left">
                       <div class="text-muted-foreground text-sm">
-                        ✓ Бесплатный пробный период 14 дней
+                        ✓ {{ t('trial.startTrial') }}
                       </div>
                       <div class="text-muted-foreground text-sm">
-                        ✓ Полная техническая поддержка
+                        ✓ {{ t('trial.trialPeriod') }}
                       </div>
                       <div class="text-muted-foreground text-sm">
-                        ✓ Помощь с миграцией данных
+                        ✓ {{ t('trial.migrationHelp') }}
                       </div>
                     </div>
                   </div>
@@ -1393,23 +1411,23 @@
                     >
                       <div>
                         <div class="text-2xl font-bold text-[#0057FF] mb-2">
-                          30 дней
+                          30 {{ t('trial.labels.days') }}
                         </div>
                         <div class="text-muted-foreground">
-                          полное внедрение
+                          {{ t('trial.labels.fullImplementation') }}
                         </div>
                       </div>
                       <div>
                         <div class="text-2xl font-bold text-[#0057FF] mb-2">
                           24/7
                         </div>
-                        <div class="text-muted-foreground">техподдержка</div>
+                        <div class="text-muted-foreground">{{ t('trial.labels.supportShort') }}</div>
                       </div>
                       <div>
                         <div class="text-2xl font-bold text-[#0057FF] mb-2">
                           99.9%
                         </div>
-                        <div class="text-muted-foreground">аптайм сервиса</div>
+                        <div class="text-muted-foreground">{{ t('trial.labels.uptime') }}</div>
                       </div>
                     </div>
                   </div>
@@ -1439,7 +1457,7 @@
                     </div>
                     <span class="text-2xl font-bold text-foreground">VION</span>
                   </div>
-                  <h3 class="mb-6 text-foreground">Контакты</h3>
+                  <h3 class="mb-6 text-foreground">{{ t('contacts.title') }}</h3>
                   <div class="space-y-4">
                     <div class="flex items-center space-x-4">
                       <div
@@ -1465,10 +1483,10 @@
                       </div>
                       <div>
                         <div class="text-foreground font-medium">
-                          +998 (90) 123-45-67
+                          +998 93 101 79 97
                         </div>
                         <div class="text-muted-foreground text-sm">
-                          Звонки 9:00-18:00
+                          {{ t('contacts.calls') }} 9:00-18:00
                         </div>
                       </div>
                     </div>
@@ -1506,7 +1524,7 @@
                           info@vion.uz
                         </div>
                         <div class="text-muted-foreground text-sm">
-                          Ответ в течение 2 часов
+                          {{ t('contacts.responseTime') }}
                         </div>
                       </div>
                     </div>
@@ -1535,45 +1553,38 @@
                       </div>
                       <div>
                         <div class="text-foreground font-medium">
-                          г. Ташкент
+                          {{ t('contacts.address') }}
                         </div>
                         <div class="text-muted-foreground text-sm">
-                          Узбекистан
+                          {{ t('contacts.country') }}
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div>
-                  <h3 class="mb-6 text-foreground">Навигация</h3>
+                  <h3 class="mb-6 text-foreground">{{ t('contacts.navigation.navig') }}</h3>
                   <div class="space-y-3">
                     <a
                       href="#home"
                       class="block text-muted-foreground hover:text-[#0057FF] font-medium transition-colors duration-200 group"
                       ><span
                         class="border-b border-transparent group-hover:border-[#0057FF]/30 pb-1"
-                        >Главная</span
+                        >{{ t('contacts.navigation.home') }}</span
                       ></a
                     ><a
                       href="#solutions"
                       class="block text-muted-foreground hover:text-[#0057FF] font-medium transition-colors duration-200 group"
                       ><span
                         class="border-b border-transparent group-hover:border-[#0057FF]/30 pb-1"
-                        >Решения</span
+                        >{{ t('contacts.navigation.solutions') }}</span
                       ></a
                     ><a
                       href="#cases"
                       class="block text-muted-foreground hover:text-[#0057FF] font-medium transition-colors duration-200 group"
                       ><span
                         class="border-b border-transparent group-hover:border-[#0057FF]/30 pb-1"
-                        >Кейсы</span
-                      ></a
-                    ><a
-                      href="#login"
-                      class="block text-muted-foreground hover:text-[#0057FF] font-medium transition-colors duration-200 group"
-                      ><span
-                        class="border-b border-transparent group-hover:border-[#0057FF]/30 pb-1"
-                        >Вход в систему</span
+                        >{{ t('contacts.navigation.cases') }}</span
                       ></a
                     >
                   </div>
@@ -1582,32 +1593,30 @@
                       <a
                         href="#"
                         class="block text-muted-foreground hover:text-[#FF6B00] text-sm transition-colors"
-                        >Техническая поддержка</a
+                        >{{ t('contacts.navigation.support') }}</a
                       ><a
                         href="#"
                         class="block text-muted-foreground hover:text-[#FF6B00] text-sm transition-colors"
-                        >База знаний</a
+                        >{{ t('contacts.navigation.knowledgeBase') }}</a
                       ><a
                         href="#"
                         class="block text-muted-foreground hover:text-[#FF6B00] text-sm transition-colors"
-                        >API документация</a
+                        >{{ t('contacts.navigation.apiDocs') }}</a
                       >
                     </div>
                   </div>
                 </div>
                 <div>
-                  <h3 class="mb-6 text-foreground">Будьте в курсе</h3>
+                  <h3 class="mb-6 text-foreground">{{ t('contacts.newsletterTitle') }}</h3>
                   <p class="text-muted-foreground mb-6 leading-relaxed">
-                    Получайте новости о функциях VION, кейсы успешных внедрений
-                    и лучшие практики автоматизации учебных центров
-                  </p>
+                    {{ t('contacts.newsletterDesc') }}</p>
                   <div class="space-y-4">
                     <div class="flex space-x-3">
                       <input
                         type="email"
                         data-slot="input"
                         class="file:text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 flex h-9 w-full min-w-0 rounded-md border px-3 py-1 text-base transition-[color,box-shadow] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-input-background border-border text-foreground placeholder-muted-foreground flex-1"
-                        placeholder="Введите ваш email"
+                        :placeholder="t('contacts.emailPlaceholder')"
                       /><button
                         data-slot="button"
                         class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive text-primary-foreground h-9 py-2 has-[>svg]:px-3 bg-[#0057FF] hover:bg-[#FF6B00] px-4 transition-all duration-300"
@@ -1633,25 +1642,75 @@
                       </button>
                     </div>
                     <p class="text-muted-foreground text-xs">
-                      Подписываясь, вы соглашаетесь с обработкой персональных
-                      данных. Отписка в любое время.
+                      {{ t('contacts.consent') }}
                     </p>
                   </div>
                   <div class="flex space-x-3 mt-8">
                     <div
                       class="w-10 h-10 bg-muted hover:bg-[#0057FF] rounded-lg flex items-center justify-center transition-colors cursor-pointer"
                     >
-                      <div class="w-5 h-5 bg-foreground rounded"></div>
+                      <div class="w-5 h-5 rounded">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="w-5 h-5"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <path d="M22 2 11 13" />
+                          <path
+                            d="M22 2 15 22a.55.55 0 0 1-1.05.05L9.5 13.5 2 10.5a.55.55 0 0 1 .05-1.05L22 2z"
+                          />
+                        </svg>
+                      </div>
                     </div>
                     <div
                       class="w-10 h-10 bg-muted hover:bg-[#0057FF] rounded-lg flex items-center justify-center transition-colors cursor-pointer"
                     >
-                      <div class="w-5 h-5 bg-foreground rounded"></div>
+                      <div class="w-5 h-5  rounded">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="w-5 h-5"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                          <path
+                            d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
+                          ></path>
+                          <line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line>
+                        </svg>
+                      </div>
                     </div>
                     <div
-                      class="w-10 h-10 bg-muted hover:bg-[#FF6B00] rounded-lg flex items-center justify-center transition-colors cursor-pointer"
+                      class="w-10 h-10 bg-muted hover:bg-[#0057FF] rounded-lg flex items-center justify-center transition-colors cursor-pointer"
                     >
-                      <div class="w-5 h-5 bg-foreground rounded"></div>
+                      <div class="w-5 h-5 rounded">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="w-5 h-5"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <path
+                            d="M22.54 6.42a2.78 2.78 0 0 0-1.95-2C18.88 4 12 4 12 4s-6.88 0-8.59.42a2.78 2.78 0 0 0-1.95 2A29.94 29.94 0 0 0 1 12a29.94 29.94 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 2C5.12 20 12 20 12 20s6.88 0 8.59-.42a2.78 2.78 0 0 0 1.95-2A29.94 29.94 0 0 0 23 12a29.94 29.94 0 0 0-.46-5.58z"
+                          ></path>
+                          <polygon
+                            points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"
+                          ></polygon>
+                        </svg>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -1661,18 +1720,17 @@
                   class="flex flex-col lg:flex-row justify-between items-center space-y-4 lg:space-y-0"
                 >
                   <div class="text-muted-foreground">
-                    <span class="font-medium">VION</span> © 2025 | Все права
-                    защищены
+                    <span class="font-medium">VION</span> © 2025 | {{ t('contacts.rights') }}
                   </div>
                   <div
                     class="flex flex-wrap justify-center lg:justify-end space-x-6 text-sm text-muted-foreground"
                   >
                     <a href="#" class="hover:text-[#0057FF] transition-colors"
-                      >Политика конфиденциальности</a
+                      >{{ t('contacts.privacy') }}</a
                     ><a href="#" class="hover:text-[#0057FF] transition-colors"
-                      >Условия использования</a
+                      >{{ t('contacts.terms') }}</a
                     ><a href="#" class="hover:text-[#0057FF] transition-colors"
-                      >Публичная оферта</a
+                      >{{ t('contacts.offer') }}</a
                     >
                   </div>
                 </div>
@@ -1686,17 +1744,108 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import Tsparticle from './components/Tsparticle.vue';
+  import Tsparticle from './components/Tsparticle.vue';
 
-const isMenuOpen = ref(false)
-const isLight = ref(false);
+  import { ref, onMounted, onBeforeUnmount } from 'vue'
+  import { useI18n } from 'vue-i18n'
+
+  const isMenuOpen = ref(false)
+  const isLight = ref(false);
 
 
-function toggleTheme() {
-  isLight.value = !isLight.value;
-  document.documentElement.classList.toggle("light", isLight.value);
-}
+  function toggleTheme() {
+    isLight.value = !isLight.value;
+    document.documentElement.classList.toggle("light", isLight.value);
+  }
+
+  // i18n
+  const { locale, t } = useI18n({ useScope: 'global' })
+
+  // dropdown state
+  const open = ref(false)
+  const root = ref(null)
+
+  // supported languages: code -> visible label
+  const langs = {
+    uz: 'O‘zbekcha',
+    ru: 'Русский',
+    en: 'English'
+  }
+
+  // little descriptions (optional, professional touch)
+  const langDescription = {}
+
+  // emoji map for quick visual indicator
+  const langEmoji = {
+    uz: '🇺🇿',
+    ru: '🇷🇺',
+    en: '🇬🇧'
+  }
+
+  // reactive current code (2-letter)
+  const current = ref(locale.value || 'uz') // loyiha hozir rus tilida ekan, default rus
+
+  // open/close
+  function toggleDropdown() {
+    open.value = !open.value
+  }
+
+  function closeDropdown() {
+    open.value = false
+  }
+
+  function selectLocale(code) {
+    if (current.value === code) {
+      closeDropdown()
+      return
+    }
+
+    // set vue-i18n locale
+    locale.value = code
+    current.value = code
+
+    // persist
+    try {
+      localStorage.setItem('locale', code)
+    } catch (e) { /* ignore */ }
+
+    // update document lang for accessibility/SEO
+    document.documentElement.lang = code
+
+    closeDropdown()
+  }
+
+  // click outside handler
+  function onClickOutside(e) {
+    if (!root.value) return
+    if (!root.value.contains(e.target)) closeDropdown()
+  }
+
+  // ESC handler
+  function onKeydown(e) {
+    if (e.key === 'Escape') closeDropdown()
+  }
+
+  onMounted(() => {
+    // restore saved locale
+    const saved = localStorage.getItem('locale')
+    if (saved && Object.keys(langs).includes(saved)) {
+      locale.value = saved
+      current.value = saved
+      document.documentElement.lang = saved
+    } else {
+      // ensure document.lang syncs with initial locale
+      document.documentElement.lang = current.value
+    }
+
+    document.addEventListener('click', onClickOutside)
+    document.addEventListener('keydown', onKeydown)
+  })
+
+  onBeforeUnmount(() => {
+    document.removeEventListener('click', onClickOutside)
+    document.removeEventListener('keydown', onKeydown)
+  })
 </script>
 
 <style lang="css" scoped>
